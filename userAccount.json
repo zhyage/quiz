@@ -1,0 +1,22 @@
+[
+  {
+    "userId" : 1,
+    "userName" : "zhy",
+    "userPassword" : "1234",
+    "userProperty" : {
+      "realName" : "zhangyang",
+      "sex" : "male",
+      "age" :  40
+    }
+  },
+  {
+    "userId" : 2,
+    "userName" : "liwei",
+    "userPassword" : "1234",
+    "userProperty" : {
+      "realName" : "liwei",
+      "sex" : "female",
+      "age" :  36
+    }
+  }
+]

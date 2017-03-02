@@ -1,0 +1,43 @@
+[
+  {
+    "quizId" : 1,
+    "type" : "radio",
+    "question" : "what's the correct option ?",
+    "options" : [
+              "A is correct answer",
+              "B is correct answer",
+              "C is correct answer",
+              "D is correct answer"
+            ],
+    "answer" : [
+              "C is correct answer"
+            ],
+    "attribute" : {
+      "institution" : [
+                1
+      ]
+    }
+  },
+  {
+    "quizId" : 2,
+    "type" : "multi-radio",
+    "question" : "what are the correct options ?",
+    "options" : [
+      "AA is correct answer",
+      "BB is correct answer",
+      "CC is correct answer",
+      "DD is correct answer",
+      "FF is correct answer"
+    ],
+    "answer" : [
+      "CC is correct answer",
+      "FF is correct answer"
+    ],
+    "attribute" : {
+      "institution" : [
+        1,
+        2
+      ]
+    }
+  }
+]
