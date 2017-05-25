@@ -59,11 +59,21 @@ let delQuiz = function(id){
     });
 };
 
+let findAllQuizFromDb = function(){
+    return quizModel.Quiz.find({});
+}
+
 addNewQuiz(quizModel.questionTypeEnum.SINGLE, "which is correct?", ['A', 'B', 'C', 'D'], ['A']);
 addNewQuiz(quizModel.questionTypeEnum.MULTIPLE, "which are correct?", ['A', 'B', 'C', 'D'], ['A', 'D']);
 addNewQuiz(quizModel.questionTypeEnum.SINGLE, "which is wrong?", ['A', 'B', 'C', 'D', 'E'], ['E']);
-modifyQuiz("58959cc3b81be16c80838512", quizModel.questionTypeEnum.SINGLE, "which is correct?", ['A', 'B', 'C', 'D'], ['B']);
-delQuiz("58959cc3b81be16c80838514");
+let allQuiz = findAllQuizFromDb().exec();
+console.log("############### begin of quizs ###################");
+allQuiz.then(function (quizs) {
+    console.log(quizs);
+})
+console.log("############### end of quizs ###################");
+//modifyQuiz("58959cc3b81be16c80838512", quizModel.questionTypeEnum.SINGLE, "which is correct?", ['A', 'B', 'C', 'D'], ['B']);
+//delQuiz("58959cc3b81be16c80838514");
 
 
 
