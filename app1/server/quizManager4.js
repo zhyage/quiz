@@ -114,17 +114,20 @@ let questionMatchFun = function(pattern, quiz){
     return false;
 }
 
+let matchAll = function (pattern, quiz) {
+    return true;
+}
+
 
 
 filterAndActionQuiz(patternQuiz, questionMatchFun, printQuiz);
 filterAndActionQuiz(patternQuiz, questionMatchFun, modifyQuiz,
     quizModel.questionTypeEnum.SINGLE, "which is correct?", ['A', 'B', 'C', 'D'], ['B']);
-//filterAndActionQuiz(patternQuiz, questionMatchFun, printQuiz);
-//filterAndActionQuiz(patternQuiz, questionMatchFun, delQuiz);
-//filterAndActionQuiz(patternQuiz, questionMatchFun, printQuiz);
+filterAndActionQuiz(patternQuiz, questionMatchFun, printQuiz);
+filterAndActionQuiz(patternQuiz, questionMatchFun, delQuiz);
+filterAndActionQuiz(patternQuiz, questionMatchFun, printQuiz);
 
-//modifyQuiz("58959cc3b81be16c80838512", quizModel.questionTypeEnum.SINGLE, "which is correct?", ['A', 'B', 'C', 'D'], ['B']);
-//delQuiz("58959cc3b81be16c80838514");
+filterAndActionQuiz(patternQuiz, matchAll, delQuiz);
 
 
 

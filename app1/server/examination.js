@@ -11,25 +11,35 @@ const examinationModel = require('./examinationModel');
 
 mongoose.Promise = Promise;
 
-createExamination = function (name, paperId) {
+createExamination = function (name) {
+
+    let newExamination = new examinationModel.examination({
+        examinationName: name,
+        examinationStatus: examinationModel.examinationStatusEnum.DISABLE,
+    });
+
+    return newExamination.save(function(err){
+        if(err){
+            console.error("save examination error : " + err);
+        }
+    });
+}
+
+addPaperToExamination = function (id, paperId) {
     examinationPaperModel.examinationPaper.findById(paperId, function (errOfFetchPaper, findPaper) {
         if (errOfFetchPaper || null == findPaper) {
             console.error("no such paper exist");
             return false;
         }
+    });
 
-        let newExamination = new examinationModel.examination({
-            examinationName: name,
-            examinationStatus: examinationModel.examinationStatusEnum.DISABLE,
-            paper: findPaper
-        });
-
-        return newExamination.save(function(err){
-            if(err){
-                console.error("save examination error : " + err);
-            }
-        });
+    examinationModel.examination.findById(id, function (erroOfFetchExamination, findExamination) {
+        if(erroOfFetchExamination || null == findExamination){
+            console.error("no such examination exist");
+            return false;
+        }
     })
+
 }
 
 delExamination = function (id) {
@@ -109,9 +119,6 @@ setExaminationEnd = function (id) {
     setExaminationStatus(id, examinationModel.examinationStatusEnum.DISABLE);
 }
 
-generateQuizListForUser(id){
-
-}
 
 generateAttenderAndQuizList = function (id, userName, userId) {
     examinationModel.examination.findById(id, function (errOfFetchExamination, findExamination) {
@@ -122,14 +129,17 @@ generateAttenderAndQuizList = function (id, userName, userId) {
         /* TODO: check attender permission */
         let attender =
             {
-                'name' : userName,
+                'name': userName,
                 'id': userId
             };
 
 
+    });
 }
 
-createExamination("first examination", '58b3d162e4d4c91f8874e6c9');
+createExamination("first examination");
+
+/*createExamination("first examination", '58b3d162e4d4c91f8874e6c9');
 setQuizOrder('58b425d86ade3e387cfc6af9');
 setAnswerOrder('58b425d86ade3e387cfc6af9');
-setExaminationStarting('58b425d86ade3e387cfc6af9');
+setExaminationStarting('58b425d86ade3e387cfc6af9');*/

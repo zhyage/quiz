@@ -30,7 +30,7 @@ let Schema = mongoose.Schema;
 let examinationSchema = new Schema ({
     examinationName: {type: String, required: true},
     examinationStatus: {type: Number, required: true},
-    paper: {type: examinationPaperModel.examinationPaperSchema, required:true},
+    quizs: [ {quiz: {type: quizModel.quizSchema}} ],
     disorderQuizs: {type: Number, required: true, default: disorderStatusEnum.DISORDER},
     disorderAnswers: {type: Number, required: true, default: disorderStatusEnum.DISORDER},
     attends: [],
